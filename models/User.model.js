@@ -19,6 +19,11 @@ const userSchema = new Schema({
       trim: true,
       lowercase: true,
     },
+    role: {
+      type: String,
+      enum: ['teacher', 'student'],
+      required: true,
+    }
   },
   {
     timestamps: true,
