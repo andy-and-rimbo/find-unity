@@ -6,7 +6,7 @@
   <input type="text" name="email" placeholder="Your Email">
 
     <label for="password">Password:</label>
-  <input type="text" name="password" placeholder="Your Password">
+  <input type="password" name="password" placeholder="Your Password">
 
   <p for="role">Are you a student or a teacher?</p>
   <input type="radio" value="student" name="role">
@@ -15,4 +15,8 @@
   <label for="role">Teacher</label>
 
   <button type="submit">Sign Up</button>
+
+  {{#if message}}
+   {{message}}
+  {{/if}}
 </form>

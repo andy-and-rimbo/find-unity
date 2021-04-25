@@ -23,7 +23,8 @@ const userSchema = new Schema({
       type: String,
       enum: ['teacher', 'student'],
       required: true,
-    }
+    },
+    profilePic: String,
   },
   {
     timestamps: true,

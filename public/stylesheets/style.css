@@ -1,6 +1,7 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0; 
 }
 
 a {
@@ -9,4 +10,17 @@ a {
 
 h1 {
   color: 15px;
+}
+
+nav {
+  width: 100vw;
+}
+nav ul{
+  display: flex;
+  text-decoration: none;
+}
+nav li {
+  padding: 10px 5px;
+  list-style-type: none;
+
 }
