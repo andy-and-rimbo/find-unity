@@ -27,7 +27,12 @@ console.log(mongoose.connection);
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    cookie: {maxAge: 1000 * 60 * 60 }, // max age = 1 hour
+    cookie: {
+      maxAge: 1000 * 60 * 60, // max age = 1 hour
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+      secure: process.env.NODE_ENV === 'production',
+      httpOnly: true,
+    }, 
     saveUninitialized: false,
     resave: true,
     store: new MongoStore({
