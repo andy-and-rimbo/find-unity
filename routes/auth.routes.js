@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const bcryptjs = require("bcryptjs");
 const User = require("../models/User.model");
+const isAuthenticated = require("../middleware/auth.middleware");
+
 
 const saltRounds = 10;
 
@@ -52,17 +54,17 @@ router.post("/signup", (req, res, next) => {
 })
 
 router.get("/login", (req,res) => {
-  console.log("Session =====>", req.session);
+  // console.log("Session =====>", req.session);
 
   res.render("auth/login")})
 
 router.post("/login", (req, res, next) => {
 
-    console.log("Session =====>", req.session);
+    // console.log("Session =====>", req.session);
     
 
     const { emailOrUsername, password } = req.body;
-    console.log(emailOrUsername, password);
+    // console.log(emailOrUsername, password);
 
     if (emailOrUsername === '' || password === '') {
       res.render("auth/login", { message: "Please enter both username/email and password." });
@@ -93,6 +95,10 @@ router.post('/logout', (req, res, next) => {
     if (err) next(err);
     res.redirect("/");
   })
+})
+
+router.get('/profile', isAuthenticated, (req, res, next) => {
+  res.render('index', {user: req.user})
 })
 
 module.exports = router;

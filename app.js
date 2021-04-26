@@ -22,7 +22,10 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('./db/index');
 
-console.log(mongoose.connection);
+// console.log(mongoose.connection);
+const isAuthenticated = require("./middleware/auth.middleware");
+
+// app.use(isAuthenticated)
 
 app.use(
   session({
