@@ -1,6 +1,6 @@
 const router = require ("express").Router();
 const Lesson = require('../models/Lesson.model');
-// const { loginCheck } = require('./middlewares');
+const {isAuthenticated, isTeacher} = require("../middleware/auth.middleware");
 
 router.get('/', (req, res, next) => {
 Lesson.find()
@@ -12,7 +12,7 @@ Lesson.find()
   })
 });
 
-router.get('/add', (req,res, next) => {
+router.get('/add', isTeacher, (req, res, next) => {
   res.render('lessons/add');
 });
 
