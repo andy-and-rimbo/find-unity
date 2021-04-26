@@ -1,5 +1,6 @@
 const router = require ("express").Router();
 const Lesson = require('../models/Lesson.model');
+const User = require('../models/User.model');
 const {isAuthenticated, isTeacher} = require("../middleware/auth.middleware");
 
 router.get('/', (req, res, next) => {
@@ -61,17 +62,58 @@ router.post('/:id', (req,res, next) => {
   })
 });
 
+
 router.get('/:id/edit', isTeacher, (req,res,next) => {
   console.log(typeof req.params.id)
   Lesson.findById(req.params.id)
   .then(lessonFromDB => {
-    console.log('DB',lessonFromDB)
     res.render('lessons/edit', { lesson: lessonFromDB });
   })
   .catch(err => {
     next(err);
-    console.log('Error',err)
   });
+});
+
+router.get('/:id', (req, res, next) => {
+  Lesson.findById(req.params.id)
+    .then(lesson => {
+      res.render('lessons/show', { lesson });
+    })
+    .catch(err => {
+      next(err);
+    });
+});
+
+router.get('/:id/details', (req, res, next) => {
+  const lessonId = req.params.id;
+  console.log('show',req.params.id)
+  Lesson.findById(lessonId).populate('owner').then(lesson => {
+    res.render('/show', { lessonDetails: lesson })
+  })
+  .catch(err => {
+    next(err);
+  });
+})
+
+router.get('/:id/edit', (req, res, next) => {
+  Lesson.findById(req.params.id).populate('student')
+  .then(lesson => {
+    console.log('lesson-log',lesson);
+    User.find().then(users => {
+      // console.log(user.role);
+      let options = '';
+      let selected = '';
+      users.forEach(student => {
+        selected = lesson.student.map(el => el._id).includes(student._id) ? ' selected' : '';
+        options += `<option value="${student._id}" ${selected}>${student.name}</option>`;
+      });
+      console.log(options);
+      res.render('lessons/edit', { lesson, users });
+    })
+  })
+  .catch(err => {
+    next(err);
+  })
 })
 
 
