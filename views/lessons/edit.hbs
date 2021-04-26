@@ -13,6 +13,14 @@
   <label for="time">Time:</label>
   <input type="text" name = "time" value="{{time}}">
 
-  <button type="submit">Create yoga lesson</button>
+    <select name="owner" multiple>
+    {{#each users}}
+      {{{selector ../lesson}}}
+    {{/each}}
+    {{!-- {{{ options }}} --}}
+  </select>
+
+
+  <button type="submit">Edit lesson</button>
 </form>
 {{/with}}
