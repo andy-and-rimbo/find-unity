@@ -1,18 +1,18 @@
 <form action="/signup" method="POST" id="signupForm">
-  <label for="username">Username:</label>
+  <label for="username">*Username:</label>
   <input type="text" name="username" placeholder="Your Username">
 
-  <label for="email">Email:</label>
-  <input type="text" name="email" placeholder="Your Email">
+  <label for="email">*Email:</label>
+  <input type="email" name="email" placeholder="Your Email">
 
-    <label for="password">Password:</label>
+    <label for="password">*Password:</label>
   <input type="password" name="password" placeholder="Your Password">
 
-  <p for="role">Are you a student or a teacher?</p>
-  <input type="radio" value="student" name="role">
-  <label for="role">Student</label>
-  <input type="radio" value="teacher" name="role">
-  <label for="role">Teacher</label>
+  <p for="role">*Are you a student or a teacher?</p>
+  <input type="radio" value="student" name="role" id="student">
+  <label for="student">Student</label>
+  <input type="radio" value="teacher" name="role" id="teacher">
+  <label for="teacher">Teacher</label>
 
   <button type="submit">Sign Up</button>
 
