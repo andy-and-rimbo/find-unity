@@ -1,0 +1,11 @@
+<h1>All yoga lessons</h1>
+{{#each lessonList}}
+  <h3>Name: {{name}}</h3>
+  <h3>Location: {{location}}</h3>
+  <h4>Date: {{date}}</h4>
+  <h4>Time: {{time}}</h4>
+  <a href="/lessons/{{_id}}/delete">Delete this lesson 🗑</a>
+   <a href="/lessons/{{_id}}/edit">Edit this lesson</a>
+{{/each}}
+
+  <a href="/lessons/add">Create lesson</a>
