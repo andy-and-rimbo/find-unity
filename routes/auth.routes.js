@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const bcryptjs = require("bcryptjs");
 const User = require("../models/User.model");
-const isAuthenticated = require("../middleware/auth.middleware");
+const {isAuthenticated, isTeacher} = require("../middleware/auth.middleware");
 
 
 const saltRounds = 10;

@@ -1,7 +1,7 @@
 const router = require ("express").Router();
 const Lesson = require('../models/Lesson.model');
 const User = require('../models/User.model');
-// const { loginCheck } = require('./middlewares');
+const {isAuthenticated, isTeacher} = require("../middleware/auth.middleware");
 
 router.get('/', (req, res, next) => {
 Lesson.find()
@@ -13,7 +13,7 @@ Lesson.find()
   })
 });
 
-router.get('/add', (req,res, next) => {
+router.get('/add', isTeacher, (req, res, next) => {
   res.render('lessons/add');
 });
 
@@ -35,7 +35,7 @@ router.post('/', (req, res, next) => {
     });
 });
 
-router.get('/:id/delete', (req, res, next) => {
+router.get('/:id/delete', isTeacher, (req, res, next) => {
   Lesson.findOneAndDelete(req.params.id) 
     .then(() => {
       res.redirect('/lessons');
@@ -62,7 +62,9 @@ router.post('/:id', (req,res, next) => {
   })
 });
 
-router.get('/:id/edit', (req,res,next) => {
+
+router.get('/:id/edit', isTeacher, (req,res,next) => {
+  console.log(typeof req.params.id)
   Lesson.findById(req.params.id)
   .then(lessonFromDB => {
     res.render('lessons/edit', { lesson: lessonFromDB });
