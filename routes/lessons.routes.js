@@ -34,7 +34,7 @@ router.post('/', (req, res, next) => {
     });
 });
 
-router.get('/:id/delete', (req, res, next) => {
+router.get('/:id/delete', isTeacher, (req, res, next) => {
   Lesson.findOneAndDelete(req.params.id) 
     .then(() => {
       res.redirect('/lessons');
@@ -61,7 +61,7 @@ router.post('/:id', (req,res, next) => {
   })
 });
 
-router.get('/:id/edit', (req,res,next) => {
+router.get('/:id/edit', isTeacher, (req,res,next) => {
   console.log(typeof req.params.id)
   Lesson.findById(req.params.id)
   .then(lessonFromDB => {
