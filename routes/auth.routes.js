@@ -2,6 +2,8 @@ const router = require("express").Router();
 const bcryptjs = require("bcryptjs");
 const User = require("../models/User.model");
 
+const passport = require('passport');
+
 const saltRounds = 10;
 
 /***** Regular expressions ****
@@ -15,6 +17,8 @@ router.get("/signup", (req, res, next) => { res.render("auth/signup")})
 router.post("/signup", (req, res, next) => {
 
   const { username, password, email, role } = req.body;
+
+  //form validation
   
   if(!username || !password || !email || !role) return res.render("auth/signup", {message: "Please fill in all of the required fields."});
 
@@ -44,7 +48,7 @@ router.post("/signup", (req, res, next) => {
               role,
 
             })
-            res.redirect("/")
+            res.redirect("/login")
           })
         })
         .catch(error => next(error))
@@ -52,41 +56,51 @@ router.post("/signup", (req, res, next) => {
 })
 
 router.get("/login", (req,res) => {
-  console.log("Session =====>", req.session);
+  // console.log("Session =====>", req.session);
 
-  res.render("auth/login")})
+  res.render("auth/login")
+})
 
-router.post("/login", (req, res, next) => {
+router.post('/login', passport.authenticate('local', {
+    successRedirect: '/login',
+    failureRedirect: '/',
+    passReqToCallback: true,
 
-    console.log("Session =====>", req.session);
+    // failureFlash: true
+  })
+);
+
+// router.post("/login", (req, res, next) => {
+
+//     console.log("Session =====>", req.session);
     
 
-    const { emailOrUsername, password } = req.body;
-    console.log(emailOrUsername, password);
+//     const { emailOrUsername, password } = req.body;
+//     console.log(emailOrUsername, password);
 
-    if (emailOrUsername === '' || password === '') {
-      res.render("auth/login", { message: "Please enter both username/email and password." });
-      return;
-    }
+//     if (emailOrUsername === '' || password === '') {
+//       res.render("auth/login", { message: "Please enter both username/email and password." });
+//       return;
+//     }
 
-    User.findOne({ $or: [{username: emailOrUsername}, {email: emailOrUsername}]})
-    .then(user => {
-      if (!user) {
-        res.render("auth/login", { message: "Couldn't find an account matching these details." });
-        return;
+//     User.findOne({ $or: [{username: emailOrUsername}, {email: emailOrUsername}]})
+//     .then(user => {
+//       if (!user) {
+//         res.render("auth/login", { message: "Couldn't find an account matching these details." });
+//         return;
 
-      } else if (bcryptjs.compareSync(password, user.password)) {
-        req.session.currentUser = user;
+//       } else if (bcryptjs.compareSync(password, user.password)) {
+//         req.session.currentUser = user;
 
-        if (user.role === "student") res.render('users/student-profile', { user });
-        else res.render('users/teacher-profile', { user });
+//         if (user.role === "student") res.render('users/student-profile', { user });
+//         else res.render('users/teacher-profile', { user });
 
-      } else {
-        res.render('auth/login', {message: "Couldn't find an account matching these details."});
-      }
-    })
-    .catch(error => next(error));
-})
+//       } else {
+//         res.render('auth/login', {message: "Couldn't find an account matching these details."});
+//       }
+//     })
+//     .catch(error => next(error));
+// })
 
 router.post('/logout', (req, res, next) => {
   req.session.destroy(err => {
@@ -96,3 +110,7 @@ router.post('/logout', (req, res, next) => {
 })
 
 module.exports = router;
+
+router.get('/student-profile', (req, res) => {
+  res.render('users/student-profile', {user: req.user})
+})
