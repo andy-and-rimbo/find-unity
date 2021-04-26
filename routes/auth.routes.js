@@ -5,10 +5,10 @@ const User = require("../models/User.model");
 const saltRounds = 10;
 
 /***** Regular expressions ****
-   specialChars = /\W/g
+  specialChars = /\W/g
   digits 0-9 = /\d/g
   letters excluding _ = /\w|_/g
- ************/
+ *****************************/
 
 router.get("/signup", (req, res, next) => { res.render("auth/signup")})
 
