@@ -59,9 +59,21 @@ const index = require("./routes/index.routes");
 const auth = require("./routes/auth.routes");
 const lessons = require("./routes/lessons.routes");
 
+app.use(function (req, res, next) {
+  res.locals.session = req.session;
+  console.log('hello');
+  
+  console.log(res.locals.session);
+  
+  next();
+});
+
 app.use("/", index);
 app.use("/", auth);
 app.use("/lessons", lessons);
+
+
+
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
