@@ -11,4 +11,7 @@
   <form action="{{lesson._id}}/join/{{session.currentUser._id}}" method="POST">
     <button>Join Lesson</button>
   </form>
+ {{#if message}}
+    {{message}}
+  {{/if}} 
 {{/if}}
