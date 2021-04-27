@@ -13,10 +13,15 @@
       <nav>
          <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/signup">Signup</a></li>
             <li><a href="/lessons/">Lessons</a></li>
-            <form action="/logout" method="POST"><button>Logout</button></form>
+
+            {{#if session.currentUser}}
+               <li><a href="/profile/{{session.currentUser._id}}">My Profile</a></li>
+               <form action="/logout" method="POST"><button>Logout</button></form>
+            {{else}}
+               <li><a href="/login">Login</a></li>
+               <li><a href="/signup">Signup</a></li>
+            {{/if}}
          </ul>
       </nav>
 

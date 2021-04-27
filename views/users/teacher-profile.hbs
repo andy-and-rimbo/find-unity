@@ -1,1 +1,4 @@
-<h1>Welcome teacher {{ user.username }}</h1>
+{{#with session.currentUser}}
+<h1>Welcome, {{ username }}</h1>
+<p>You are a {{ role }}</p>
+{{/with}}
