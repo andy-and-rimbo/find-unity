@@ -5,6 +5,7 @@ const {isAuthenticated, isTeacher} = require("../middleware/auth.middleware");
 
 router.get('/', (req, res, next) => {
 Lesson.find()
+  .populate('owner')
   .then(lessons => {
     res.render('lessons/index', { lessonList: lessons });
   })
@@ -24,8 +25,8 @@ router.post('/', (req, res, next) => {
     description,
     location,
     date,
-    time
-    // owner: req.user._id
+    time,
+    owner: req.session.currentUser._id
   })
     .then(() => {
       res.redirect('/lessons');
@@ -45,6 +46,17 @@ router.get('/:id/delete', isTeacher, (req, res, next) => {
     });
 })
 
+router.get('/:id/edit', isTeacher, (req,res,next) => {
+  console.log(typeof req.params.id)
+  Lesson.findById(req.params.id)
+  .then(lessonFromDB => {
+    res.render('lessons/edit', { lesson: lessonFromDB });
+  })
+  .catch(err => {
+    next(err);
+  });
+});
+
 router.post('/:id', (req,res, next) => {
   const { name, description, location, date,time } = req.body; 
   Lesson.findByIdAndUpdate(req.params.id, {
@@ -62,21 +74,29 @@ router.post('/:id', (req,res, next) => {
   })
 });
 
+router.post('/:lessonId/join/:userId', isAuthenticated, (req,res,next) => {
+  console.log('joining')
+  console.log(req.params)
+  const { userId, lessonId } = req.params;
 
-router.get('/:id/edit', isTeacher, (req,res,next) => {
-  console.log(typeof req.params.id)
-  Lesson.findById(req.params.id)
-  .then(lessonFromDB => {
-    res.render('lessons/edit', { lesson: lessonFromDB });
-  })
-  .catch(err => {
-    next(err);
-  });
-});
+  Lesson.findByIdAndUpdate(lessonId, { $push: {students: userId}}, {new: true})
+  .then(lesson => console.log(lesson))
+
+  User.findByIdAndUpdate(userId, { $push: {bookedLessons: lessonId}})
+    .then(
+      () => res.redirect('/')
+    )
+})
 
 router.get('/:id', (req, res, next) => {
   Lesson.findById(req.params.id)
+    .populate('owner')
     .then(lesson => {
+
+      console.log('finding lesson');
+      
+      console.log(lesson);
+      
       res.render('lessons/show', { lesson });
     })
     .catch(err => {

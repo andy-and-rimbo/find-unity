@@ -1,2 +1,14 @@
-<h1>Welcome student {{ user.username }}</h1>
+{{#with user}}
+<h1>Welcome, {{ username }}</h1>
+<p>You are a {{ role }}</p>
 
+
+My booked Classes:
+<ul>
+  {{#each bookedLessons}}
+    <li>{{name}}</li>
+  {{/each}}
+</ul>
+
+
+{{/with}}

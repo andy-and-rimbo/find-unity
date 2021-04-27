@@ -3,5 +3,12 @@
 <p>Name: {{name}}</p>
 <p>Location: {{location}}</p>
 <p>Time: {{time}}</p>
+<p>Owner:{{owner.username}}</p>
 
 {{/with}}
+
+{{#if session.currentUser}}
+  <form action="{{lesson._id}}/join/{{session.currentUser._id}}" method="POST">
+    <button>Join Lesson</button>
+  </form>
+{{/if}}

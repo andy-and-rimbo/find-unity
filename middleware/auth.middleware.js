@@ -3,7 +3,6 @@ const isAuthenticated = (req,res,next)  => {
   console.log('logged in???')
   
   if (req.session.currentUser) {
-    console.log(req.session.currentUser)
     return next();
   }
   return res.render('auth/login', {message: "Please log in to view this page."})

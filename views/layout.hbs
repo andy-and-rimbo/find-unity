@@ -16,7 +16,7 @@
             <li><a href="/lessons/">Lessons</a></li>
 
             {{#if session.currentUser}}
-               <li><a href="/profile/{{session.currentUser._id}}">My Profile</a></li>
+               <li><a href="/myprofile">My Profile</a></li>
                <form action="/logout" method="POST"><button>Logout</button></form>
             {{else}}
                <li><a href="/login">Login</a></li>

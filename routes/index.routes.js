@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const {isAuthenticated, isTeacher} = require("../middleware/auth.middleware");
+const User = require("../models/User.model");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
@@ -14,5 +15,18 @@ router.get('/profile/:id', isAuthenticated, (req, res, next) => {
   res.render('users/student-profile')
 })
 
+
+router.get('/myprofile', isAuthenticated, (req,res,next) => {
+  // console.log(req.session.currentUser);
+  
+  User.findById(req.session.currentUser._id)
+    .populate('bookedLessons')
+    .then (user => {
+      console.log(user);
+      
+      if(user.role === 'teacher') res.render('users/teacher-profile', {user})
+      res.render('users/student-profile', {user})
+    })
+})
 
 module.exports = router;
