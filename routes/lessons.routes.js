@@ -19,13 +19,14 @@ router.get('/add', isTeacher, (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  const { name, description, location, date,time } = req.body; 
+  const { name, description, location, date,time, maxParticipants } = req.body; 
   Lesson.create({
     name,
     description,
     location,
     date,
     time,
+    maxParticipants,
     owner: req.session.currentUser._id
   })
     .then((lesson) => {
@@ -127,6 +128,8 @@ router.get('/:id', (req, res, next) => {
       let isUser;
       let isOwner;
       let alreadyEnrolled;
+
+      lesson.spacesLeft = lesson.maxParticipants - lesson.students.length;
 
       if (req.session.currentUser) {
         isUser = true;
