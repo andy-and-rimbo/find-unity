@@ -3,12 +3,14 @@
 <p>You are a {{ role }}</p>
 
 
+{{#if bookedLessons}}
 My booked Classes:
 <ul>
   {{#each bookedLessons}}
-    <a href="/lessons/{{_id}}"><li>{{name}}</li></a>
+    <li><a href="/lessons/{{_id}}">{{name}}</a></li>
   {{/each}}
 </ul>
-
-
+{{else}}
+<h4>You haven't booked onto any classes yet. Check out our <a href="/lessons/">Lessons</a> to see what's on offer.</h4>
+{{/if}}
 {{/with}}

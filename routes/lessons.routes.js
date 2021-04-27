@@ -28,12 +28,15 @@ router.post('/', (req, res, next) => {
     time,
     owner: req.session.currentUser._id
   })
-    .then(() => {
+    .then((lesson) => {
+      User.findByIdAndUpdate(req.session.currentUser._id, { $push: {organisedLessons: lesson._id}}, {new:true})
+        .then(newlesson => console.log(newlesson))
       res.redirect('/lessons');
     })
     .catch(err => {
       next(err);
     });
+  
 });
 
 router.get('/:id/delete', isTeacher, (req, res, next) => {
@@ -47,7 +50,7 @@ router.get('/:id/delete', isTeacher, (req, res, next) => {
 })
 
 router.get('/:id/edit', isTeacher, (req,res,next) => {
-  console.log(typeof req.params.id)
+  // console.log(typeof req.params.id)
   Lesson.findById(req.params.id)
   .then(lessonFromDB => {
     res.render('lessons/edit', { lesson: lessonFromDB });

@@ -21,10 +21,11 @@ router.get('/myprofile', isAuthenticated, (req,res,next) => {
   
   User.findById(req.session.currentUser._id)
     .populate('bookedLessons')
+    .populate('organisedLessons')
     .then (user => {
       console.log(user);
       
-      if(user.role === 'teacher') res.render('users/teacher-profile', {user})
+      if(user.role === 'teacher') return res.render('users/teacher-profile', {user})
       res.render('users/student-profile', {user})
     })
 })

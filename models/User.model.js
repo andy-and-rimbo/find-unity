@@ -30,6 +30,11 @@ const userSchema = new Schema({
       ref: 'Lesson'
       }
     ],
+    organisedLessons: [
+      { type: Schema.Types.ObjectId, 
+        ref: 'Lesson'
+      }
+    ]
   },
   
   {

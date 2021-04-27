@@ -1,6 +1,18 @@
-{{#with session.currentUser}}
+{{#with user}}
 <h1>Welcome, {{ username }}</h1>
 <p>You are a {{ role }}</p>
 
+{{#if organisedLessons}}
+
+My organised lessons:
+<ul>
+  {{#each organisedLessons}}
+  <li><a href="/lessons/{{_id}}">{{name}}</a></li>
+  {{/each}}
+</ul>
+
+{{else}}
+  <h4>You haven't organised any lessons yet</h4>
+{{/if}}
 
 {{/with}}
