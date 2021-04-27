@@ -97,11 +97,20 @@ router.post('/:lessonId/join/:userId', isAuthenticated, (req,res,next) => {
             () => res.redirect('/')
           )
           }
-
-
     })
 
   
+})
+
+router.post('/:lessonId/leave/:userId', isAuthenticated, (req,res,next) => {
+  const { userId, lessonId } = req.params;
+
+  Lesson.findByIdAndUpdate(lessonId,{ $pull: {students: userId}}, {new:true})
+    .then(lesson => {
+      User.findByIdAndUpdate(userId, { $pull: {bookedLessons: lessonId}})
+        .then(() => res.redirect('/'))
+    })
+
 })
 
 // gets lesson details
