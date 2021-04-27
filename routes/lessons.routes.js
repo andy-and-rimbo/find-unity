@@ -93,9 +93,7 @@ router.post('/:lessonId/join/:userId', isAuthenticated, (req,res,next) => {
         .then(lesson => console.log(lesson))
 
         User.findByIdAndUpdate(userId, { $push: {bookedLessons: lessonId}})
-          .then(
-            () => res.redirect('/')
-          )
+          .then(() => res.render('lessons/show', {lesson, isUser: true, isOwner: false, alreadyEnrolled: true}))
           }
     })
 
@@ -108,7 +106,7 @@ router.post('/:lessonId/leave/:userId', isAuthenticated, (req,res,next) => {
   Lesson.findByIdAndUpdate(lessonId,{ $pull: {students: userId}}, {new:true})
     .then(lesson => {
       User.findByIdAndUpdate(userId, { $pull: {bookedLessons: lessonId}})
-        .then(() => res.redirect('/'))
+        .then(() => res.render('lessons/show', {lesson, isUser: true, isOwner: false, alreadyEnrolled: false}))
     })
 
 })
@@ -121,24 +119,24 @@ router.get('/:id', (req, res, next) => {
     .then(lesson => {
       console.log('finding lesson');
       console.log(lesson);
-      const pageSettings = {}
+      let isUser;
+      let isOwner;
+      let alreadyEnrolled;
 
       if (req.session.currentUser) {
-        pageSettings.isUser = true;
+        isUser = true;
         console.log('booked' , req.session.currentUser.bookedLessons);
         
         if (lesson.owner._id == req.session.currentUser._id) {
-          pageSettings.isOwner = true;
+          isOwner = true;
 
         } 
         else if (lesson.students.includes(req.session.currentUser._id)) {
-          pageSettings.alreadyEnrolled = true;
+          alreadyEnrolled = true;
         } 
         
-      } 
-      console.log(pageSettings)
-      
-      res.render('lessons/show', { lesson, pageSettings });
+      }       
+      res.render('lessons/show', { lesson, isUser, isOwner, alreadyEnrolled });
     })
     .catch(err => {
       next(err);

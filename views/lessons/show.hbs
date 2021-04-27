@@ -6,9 +6,6 @@
 <p>Owner:{{owner.username}}</p>
 
 {{/with}}
-{{#with pageSettings}}
-
-
   {{#if isOwner}}
       <a href="/lessons/{{_id}}/delete">Delete this lesson 🗑</a>
       <a href="/lessons/{{_id}}/edit">Edit this lesson</a>
@@ -16,17 +13,16 @@
 
   {{#if isUser}}
     {{#if alreadyEnrolled}}
-      <form action="{{../lesson._id}}/leave/{{../session.currentUser._id}}" method="POST">
+      <form action="/lessons/{{lesson._id}}/leave/{{session.currentUser._id}}" method="POST">
         <button>Cancel participation</button>
       </form>
      {{else}}
-      <form action="{{../lesson._id}}/join/{{../session.currentUser._id}}" method="POST">
+      <form action="/lessons/{{lesson._id}}/join/{{session.currentUser._id}}" method="POST">
         <button>Join Lesson</button>
       </form> 
     {{/if}}
   
   {{/if}}
-  {{/with}}
 
     {{!-- {{#if message}}
         {{message}}
