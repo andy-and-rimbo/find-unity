@@ -16,8 +16,10 @@
 
   {{#if isUser}}
     {{#if alreadyEnrolled}}
-      <a href="">Cancel participation</a>
-    {{else}}
+      <form action="{{../lesson._id}}/leave/{{../session.currentUser._id}}" method="POST">
+        <button>Cancel participation</button>
+      </form>
+     {{else}}
       <form action="{{../lesson._id}}/join/{{../session.currentUser._id}}" method="POST">
         <button>Join Lesson</button>
       </form> 
