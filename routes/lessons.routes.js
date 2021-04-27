@@ -112,10 +112,24 @@ router.get('/:id', (req, res, next) => {
     .then(lesson => {
       console.log('finding lesson');
       console.log(lesson);
+      const pageSettings = {}
 
+      if (req.session.currentUser) {
+        pageSettings.isUser = true;
+        console.log('booked' , req.session.currentUser.bookedLessons);
+        
+        if (lesson.owner._id == req.session.currentUser._id) {
+          pageSettings.isOwner = true;
+
+        } 
+        else if (lesson.students.includes(req.session.currentUser._id)) {
+          pageSettings.alreadyEnrolled = true;
+        } 
+        
+      } 
+      console.log(pageSettings)
       
-      
-      res.render('lessons/show', { lesson });
+      res.render('lessons/show', { lesson, pageSettings });
     })
     .catch(err => {
       next(err);
