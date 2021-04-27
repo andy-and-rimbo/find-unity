@@ -104,14 +104,16 @@ router.post('/:lessonId/join/:userId', isAuthenticated, (req,res,next) => {
   
 })
 
+// gets lesson details
+
 router.get('/:id', (req, res, next) => {
   Lesson.findById(req.params.id)
     .populate('owner')
     .then(lesson => {
-
       console.log('finding lesson');
-      
       console.log(lesson);
+
+      
       
       res.render('lessons/show', { lesson });
     })
@@ -120,16 +122,16 @@ router.get('/:id', (req, res, next) => {
     });
 });
 
-router.get('/:id/details', (req, res, next) => {
-  const lessonId = req.params.id;
-  console.log('show',req.params.id)
-  Lesson.findById(lessonId).populate('owner').then(lesson => {
-    res.render('/show', { lessonDetails: lesson })
-  })
-  .catch(err => {
-    next(err);
-  });
-})
+// router.get('/:id/details', (req, res, next) => {
+//   const lessonId = req.params.id;
+//   console.log('show',req.params.id)
+//   Lesson.findById(lessonId).populate('owner').then(lesson => {
+//     res.render('/show', { lessonDetails: lesson })
+//   })
+//   .catch(err => {
+//     next(err);
+//   });
+// })
 
 router.get('/:id/edit', (req, res, next) => {
   Lesson.findById(req.params.id).populate('student')
