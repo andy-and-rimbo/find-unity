@@ -136,6 +136,7 @@ router.get('/:id', (req, res, next) => {
         } 
         
       }       
+      console.log({isOwner}, {alreadyEnrolled}, {isUser})
       res.render('lessons/show', { lesson, isUser, isOwner, alreadyEnrolled });
     })
     .catch(err => {
