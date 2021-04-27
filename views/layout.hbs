@@ -7,6 +7,9 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>{{title}}</title>
       <link rel="stylesheet" href="/stylesheets/style.css" />
+        <!-- this is coming from https://docs.mapbox.com/mapbox-gl-js/api/ -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
    </head>
 
    <body>
@@ -16,13 +19,15 @@
             <li><a href="/login">Login</a></li>
             <li><a href="/signup">Signup</a></li>
             <li><a href="/lessons/">Lessons</a></li>
-            <form action="/logout" method="POST"><button>Logout</button></form>
          </ul>
       </nav>
 
       {{{body}}}
+     
+
 
       <script src="/js/script.js"></script>
+    <script src="/js/mapbox.js"></script>
    </body>
 
 </html>
