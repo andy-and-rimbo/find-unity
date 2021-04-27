@@ -79,13 +79,26 @@ router.post('/:lessonId/join/:userId', isAuthenticated, (req,res,next) => {
   console.log(req.params)
   const { userId, lessonId } = req.params;
 
-  Lesson.findByIdAndUpdate(lessonId, { $push: {students: userId}}, {new: true})
-  .then(lesson => console.log(lesson))
+  Lesson.findById(lessonId)
+    .populate('owner')
+    .then(lesson => {
+      if(lesson.students.includes(userId)) {
+        console.log('you are already enrolled');
+        return res.render('lessons/show', { lesson: lesson, message: 'You are already enrolled on this course'})
+      }
+      else {Lesson.findByIdAndUpdate(lessonId, { $push: {students: userId}}, {new: true})
+        .then(lesson => console.log(lesson))
 
-  User.findByIdAndUpdate(userId, { $push: {bookedLessons: lessonId}})
-    .then(
-      () => res.redirect('/')
-    )
+        User.findByIdAndUpdate(userId, { $push: {bookedLessons: lessonId}})
+          .then(
+            () => res.redirect('/')
+          )
+          }
+
+
+    })
+
+  
 })
 
 router.get('/:id', (req, res, next) => {
