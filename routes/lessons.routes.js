@@ -40,13 +40,18 @@ router.post('/', (req, res, next) => {
 });
 
 router.get('/:id/delete', isTeacher, (req, res, next) => {
+   
   Lesson.findOneAndDelete(req.params.id) 
-    .then(() => {
-      res.redirect('/lessons');
-    })
-    .catch(err => {
-      next(err);
-    });
+    .then(lesson => {
+      console.log(lesson);
+      console.log(lesson.owner);
+      
+      User.findByIdAndUpdate(lesson.owner, { $pull: {organisedLessons: req.params.id}})
+        .then(user => res.redirect('/'))
+        .catch(err => {
+          next(err);
+        })
+      })
 })
 
 router.get('/:id/edit', isTeacher, (req,res,next) => {

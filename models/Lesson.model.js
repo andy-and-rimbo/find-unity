@@ -8,6 +8,7 @@ const lessonSchema = new Schema({
     location: String,
     date: Date,
     time: String,
+    maxParticipants: Number,
     owner: {
       type: Schema.Types.ObjectId,
       ref: 'User',
