@@ -1,14 +1,14 @@
-<div id="lessons-index">
+<div id="lessons">
   <h1>All yoga lessons</h1>
   {{#each lessonList}}
   <div class="lesson-div">
       <h3>{{name}}</h3>
       <h4>Date: {{date}}</h4>
       <h4>Teacher: {{ owner.username }}</h4>
-      <a href="/lessons/{{_id}}">See details</a> 
+      <a href="/lessons/{{_id}}" class="button">See details</a> 
   </div>
 
   {{/each}}
 
-  <a href="/lessons/add">Create lesson</a>
+  <a href="/lessons/add" class="button create-edit-btn">Create lesson</a>
 </div>
