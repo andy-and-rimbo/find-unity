@@ -118,7 +118,9 @@ nav object {
   padding: 20px;
 }
 
-
+.authForm h1 {
+  padding: 20px;
+}
 
 .authForm {
   padding: 15px;
@@ -137,7 +139,7 @@ nav object {
   text-align: left;
 }
 
-.authForm input {
+.authForm input:not([type="radio"]) {
   padding: 5px;
   border-radius: 5px;
   border: 1px solid grey;
@@ -145,8 +147,3 @@ nav object {
   width: 50%;
 }
 
-/* .authForm button {
-  width: 80px;
-  padding: 10px 5px;
-  margin: auto
-} */
