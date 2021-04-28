@@ -1,19 +1,30 @@
 <h1>Create a lesson</h1>
-<form action="/lessons" method="POST">
-  <label for="name">Name:</label>
-  <input type="text" name = "name">
+<form action="/lessons" method="POST" class="form">
 
-  <label for="location">Location:</label>
-  <input type="text" name = "location">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" name = "name">
+  </div>
 
-  <label for="date">Date:</label>
-  <input type="date" name = "date">
+  <div>
+    <label for="location">Location:</label>
+    <input type="text" name = "location">
+  </div>
 
-  <label for="time">Time:</label>
-  <input type="text" name = "time">
+  <div>
+    <label for="date">Date:</label>
+    <input type="date" name = "date">
+  </div>
 
-  <label for="maxParticipants">Maximum participants:</label>
-  <input type="number" name = "maxParticipants">
+  <div>
+    <label for="time">Time:</label>
+    <input type="text" name = "time">
+  </div>
+
+  <div>
+    <label for="maxParticipants">Maximum participants:</label>
+    <input type="number" name = "maxParticipants">
+  </div>
 
   <button type="submit">Create yoga lesson</button>
 
