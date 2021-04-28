@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { uploader, cloudinary } = require("../config/cloudinary");
 const {isAuthenticated, isTeacher} = require("../middleware/auth.middleware");
 const User = require("../models/User.model");
 

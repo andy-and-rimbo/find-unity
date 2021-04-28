@@ -2,6 +2,11 @@ const router = require("express").Router();
 const bcryptjs = require("bcryptjs");
 const User = require("../models/User.model");
 const {isAuthenticated, isTeacher} = require("../middleware/auth.middleware");
+const { uploader, cloudinary } = require("../config/cloudinary");
+// const cloudinary = require('cloudinary').v2;
+
+console.log(uploader);
+console.log(cloudinary);
 
 
 const saltRounds = 10;
@@ -14,7 +19,7 @@ const saltRounds = 10;
 
 router.get("/signup", (req, res, next) => { res.render("auth/signup")})
 
-router.post("/signup", (req, res, next) => {
+router.post("/signup", uploader.single('photo'),(req, res, next) => {
 
   const { username, password, email, role } = req.body;
   
@@ -35,6 +40,9 @@ router.post("/signup", (req, res, next) => {
       .then(user=> {
         if (user) return res.render("auth/signup", {message: "Email is already registered. Please log in."});
     
+        const imgPath = req.file.path;
+        const publicId = req.file.filename;
+
         bcryptjs
           .genSalt(saltRounds)
           .then(salt => bcryptjs.hash(password, salt))
@@ -44,7 +52,8 @@ router.post("/signup", (req, res, next) => {
               email,
               password: hashedPassword,
               role,
-
+              imgPath, 
+              publicId
             })
             res.redirect("/")
           })
