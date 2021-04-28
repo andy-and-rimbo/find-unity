@@ -7,7 +7,7 @@
 }
 
 nav {
-  background-color: #C7D483;
+  background-color: #05B3D5;
   overflow: hidden;
 }
 
@@ -16,6 +16,7 @@ nav a {
   display: block;
   color: black;
   text-align: center;
+  vertical-align: middle;
   padding: 15px 10px;
   text-decoration: none;
   font-size: 17px;
@@ -59,7 +60,15 @@ body {
   background-color: #FAF5F2;
 }
 
+nav object {
+  width: 50px;
+  height: 50px;
+  float: left;
+}
+
 #landing-page , #landing-page > div{
+  margin: auto;
+  max-width: 600px;
   text-align: center;
   min-height: 100vh;
   display: flex;
@@ -82,13 +91,19 @@ body {
   display: block;
 }
 
-#landing-page .signup-btn {
+#landing-page .signup-btn, .authForm button  {
   background-color: #eae9ce;
   text-decoration: none;
   border-radius: 10px;
   width:40%;
   padding: 10px;
+  margin: auto;
+  border: 1px solid grey;
+  
+}
 
+.authForm button {
+  margin-top: 15px;
 }
 
 #landing-page > * {
@@ -99,3 +114,35 @@ body {
   padding-top: 30px;
 }
 
+.form-div {
+  padding: 20px;
+}
+
+
+
+.authForm {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.authForm  div {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+}
+
+.authForm input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+/* .authForm button {
+  width: 80px;
+  padding: 10px 5px;
+  margin: auto
+} */

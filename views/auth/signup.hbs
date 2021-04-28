@@ -1,22 +1,34 @@
-<form action="/signup" method="POST" id="signupForm">
-  <label for="username">*Username:</label>
-  <input type="text" name="username" placeholder="Your Username">
 
-  <label for="email">*Email:</label>
-  <input type="email" name="email" placeholder="Your Email">
+    <form action="/signup" method="POST" id="signupForm" class="authForm">
+    <h1>Sign up</h1>
+      <div>
+        <label for="username">*Username:</label>
+        <input type="text" name="username" placeholder="Your Username">
+      </div>
+      <div>
+        <label for="email">*Email:</label>
+        <input type="email" name="email" placeholder="Your Email">
+      </div>
+      <div>
+        <label for="password">*Password:</label>
+        <input type="password" name="password" placeholder="Your Password">
 
-    <label for="password">*Password:</label>
-  <input type="password" name="password" placeholder="Your Password">
+      </div>
+      <div>
+        <p for="role">*Are you a student or a teacher?</p>
+        <div>
+            <input type="radio" value="student" name="role" id="student">
+          <label for="student">Student</label>
+        </div>
+        <div>
+          <input type="radio" value="teacher" name="role" id="teacher">
+          <label for="teacher">Teacher</label>
+        </div>
+      </div>
 
-  <p for="role">*Are you a student or a teacher?</p>
-  <input type="radio" value="student" name="role" id="student">
-  <label for="student">Student</label>
-  <input type="radio" value="teacher" name="role" id="teacher">
-  <label for="teacher">Teacher</label>
+      <button type="submit">Sign Up</button>
 
-  <button type="submit">Sign Up</button>
-
-  {{#if message}}
-   {{message}}
-  {{/if}}
-</form>
+      {{#if message}}
+      {{message}}
+      {{/if}}
+    </form>
