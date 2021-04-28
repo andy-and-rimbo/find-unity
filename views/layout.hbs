@@ -10,16 +10,31 @@
         <!-- this is coming from https://docs.mapbox.com/mapbox-gl-js/api/ -->
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+   
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
    </head>
 
    <body>
-      <nav>
-         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/signup">Signup</a></li>
-            <li><a href="/lessons/">Lessons</a></li>
+      <nav class="topnav">
+            <object data="/images/Yoga-logo1.svg" type="image/svg+xml"></object>
+
+            <a href="/">Home</a>
+            <a href="/lessons/">Lessons</a>
+
+            {{#if session.currentUser}}
+               <a href="/myprofile">My Profile</a>
+               <form action="/logout" method="POST"><button>Logout</button></form>
+            {{else}}
+               <a href="/login">Login</a>
+               <a href="/signup">Signup</a>
+            {{/if}}
          </ul>
+         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+         </a>
       </nav>
 
       {{{body}}}

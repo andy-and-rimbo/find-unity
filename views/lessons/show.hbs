@@ -1,6 +1,37 @@
-<h2>Yoga lesson information</h2>
-{{#with lesson}}
-<p>Name: {{name}}</p>
-<p>Location: {{location}}</p>
-<p>Time: {{time}}</p>
-{{/with}}
+
+<div id="lessons">
+  <h2>Yoga lesson information</h2>
+  <div class="lesson-div">
+    {{#with lesson}}
+      <p><strong>Name:</strong> {{name}}</p>
+      <p><strong>Location:</strong> {{location}}</p>
+      <p><strong>Time:</strong> {{time}}</p>
+      <p><strong>Owner:</strong>{{owner.username}}</p>
+      <p><strong>Spaces left:</strong> {{spacesLeft}}</p>
+
+    {{/with}}
+      {{#if isOwner}}
+          <a href="/lessons/{{lesson._id}}/delete" class="button create-edit-btn">Delete this lesson 🗑</a>
+          <a href="/lessons/{{lesson._id}}/edit" class="button create-edit-btn">Edit this lesson</a>
+      {{/if}}
+
+      {{#if isUser}}
+        {{#if alreadyEnrolled}}
+          <form action="/lessons/{{lesson._id}}/leave/{{session.currentUser._id}}" method="POST">
+            <button class="button">Cancel participation</button>
+          </form>
+        {{else}}
+          <form action="/lessons/{{lesson._id}}/join/{{session.currentUser._id}}" method="POST">
+            <button class="button">Join Lesson</button>
+          </form> 
+        {{/if}}
+      
+      {{/if}}
+
+  </div>
+
+      {{!-- {{#if message}}
+          {{message}}
+      {{/if}}  --}}
+</div>
+

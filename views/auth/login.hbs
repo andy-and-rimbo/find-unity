@@ -1,11 +1,16 @@
-<form action="/login" method="POST" id="loginForm">
-  <label for="emailOrUsername">Email or Username:</label>
-  <input type="text" name="emailOrUsername" placeholder="Your Email">
+<form action="/login" method="POST" id="loginForm" class="form">
+    <h1>Log in</h1>
 
+  <div>
+    <label for="emailOrUsername">Email or Username:</label>
+    <input type="text" name="emailOrUsername" placeholder="Your Email">
+  </div>
+  <div>
     <label for="password">Password:</label>
-  <input type="password" name="password"  placeholder="Your Password">
+    <input type="password" name="password"  placeholder="Your Password">
+  </div>
 
-  <button type="submit">Sign Up</button>
+  <button type="submit" class="button">Log in</button>
 
   {{#if message}}
     {{message}}

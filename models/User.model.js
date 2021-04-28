@@ -25,7 +25,18 @@ const userSchema = new Schema({
       required: true,
     },
     profilePic: String,
+    bookedLessons: [
+      { type: Schema.Types.ObjectId, 
+      ref: 'Lesson'
+      }
+    ],
+    organisedLessons: [
+      { type: Schema.Types.ObjectId, 
+        ref: 'Lesson'
+      }
+    ]
   },
+  
   {
     timestamps: true,
   }

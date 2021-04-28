@@ -2,21 +2,24 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const geocoder = require('../utils/geocoder');
 
+
 const lessonSchema = new Schema({
     name: String,
     description: String,
     location: String,
     date: Date,
     time: String,
-  owner: {
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  },
+    maxParticipants: Number,
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
   // status: {
   //   type: String,
   //   enum: ['online-class', 'offline-class'],
   //   required: true,
   // },
+
   student: [
   {
     type: Schema.Types.ObjectId,
@@ -41,10 +44,15 @@ const lessonSchema = new Schema({
 createdAt: {
     type: Date,
     default: Date.now()
-}
+},
+ students: [{
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }]
 });
 
- // Before saving, convert address to geoCode
+
+// Before saving, convert address to geoCode
  lessonSchema.pre('save', async function(next) {
   const loc = await geocoder.geocode(this.address);
   this.location = {
