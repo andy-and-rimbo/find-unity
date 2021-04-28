@@ -179,5 +179,15 @@ nav object {
 
 .create-edit-btn {
   background-color: #d6d6d6;
-  width: 50%;
+  width: 40%;
+margin: 10px auto ;
+  
+}
+
+#profile-div {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  list-style-position: inside;
 }
