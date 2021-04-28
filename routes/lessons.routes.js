@@ -3,7 +3,7 @@ const Lesson = require('../models/Lesson.model');
 const User = require('../models/User.model');
 const {isAuthenticated, isTeacher} = require("../middleware/auth.middleware");
 const { getLessons, addLesson } = require('../controller/lessons');
-
+const { formatDateAndTime } = require('../public/js/helpers');
 // router.route('/').get(getLessons);
 
 router.get('/', (req, res, next) => {
@@ -22,13 +22,17 @@ router.get('/add', isTeacher, (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  const { name, description, location, date,time, maxParticipants, address } = req.body; 
+  const { name, description, location, dateAndTime, maxParticipants, address } = req.body; 
+  console.log('req.body', req.body)
+  console.log({dateAndTime});
+  
   Lesson.create({
     name,
     description,
     location,
-    date,
-    time,
+    dateAndTime,
+    date: formatDateAndTime(dateAndTime).date,
+    time: formatDateAndTime(dateAndTime).time,
     maxParticipants,
     address,
     owner: req.session.currentUser._id
