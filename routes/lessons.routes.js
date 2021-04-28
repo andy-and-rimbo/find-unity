@@ -30,7 +30,7 @@ router.post('/', (req, res, next) => {
     date,
     time,
     maxParticipants,
-    address
+    address,
     owner: req.session.currentUser._id
   })
     .then((lesson) => {
