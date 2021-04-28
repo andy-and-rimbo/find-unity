@@ -1,24 +1,38 @@
 <h1>Edit a lesson</h1>
 {{#with lesson}}
-<form action="/lessons/{{_id}}" method="POST">
-  <label for="name">Name:</label>
-  <input type="text" name = "name" value="{{name}}">
+<form action="/lessons/{{_id}}" method="POST" class="form">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" name = "name" value="{{name}}">
+  </div>
+  <div>
+    <label for="location">Location:</label>
+    <input type="text" name = "location" value="{{location}}">
+ </div>
 
-  <label for="location">Location:</label>
-  <input type="text" name = "location" value="{{location}}">
+  <div>
+    <label for="date">Date:</label>
+    <input type="date" name = "date" value="{{date}}">
+  </div>
 
-  <label for="date">Date:</label>
-  <input type="date" name = "date" value="{{date}}">
+  <div>
+    <label for="time">Time:</label>
+    <input type="text" name = "time" value="{{time}}">
+  </div>
 
-  <label for="time">Time:</label>
-  <input type="text" name = "time" value="{{time}}">
 
-    <select name="owner" multiple>
+ <div>
+    <label for="maxParticipants">Maximum participants:</label>
+    <input type="number" name = "maxParticipants" value="{{maxParticipants}}">
+  </div>
+
+
+    {{!-- <select name="owner" multiple>
     {{#each users}}
       {{{selector ../lesson}}}
     {{/each}}
-    {{!-- {{{ options }}} --}}
-  </select>
+     {{{ options }}} 
+  </select> --}}
 
 
   <button type="submit">Edit lesson</button>

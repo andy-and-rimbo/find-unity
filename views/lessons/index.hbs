@@ -1,9 +1,14 @@
-<h1>All yoga lessons</h1>
-{{#each lessonList}}
-  <h3>Name: {{name}}</h3>
-  <h4>Date: {{date}}</h4>
-  <li>Teacher: {{ owner.username }}</li>
-    <a href="/lessons/{{_id}}">See details</a>
-{{/each}}
+<div id="lessons-index">
+  <h1>All yoga lessons</h1>
+  {{#each lessonList}}
+  <div class="lesson-div">
+      <h3>{{name}}</h3>
+      <h4>Date: {{date}}</h4>
+      <h4>Teacher: {{ owner.username }}</h4>
+      <a href="/lessons/{{_id}}">See details</a> 
+  </div>
+
+  {{/each}}
 
   <a href="/lessons/add">Create lesson</a>
+</div>

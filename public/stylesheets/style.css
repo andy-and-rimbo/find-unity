@@ -1,7 +1,6 @@
 * {
   box-sizing:border-box;
   padding: 0;
-  margin: 0;
   font-family: 'Nanum Gothic', sans-serif;
   max-width: 100vw;
 }
@@ -16,14 +15,16 @@ nav a {
   display: block;
   color: black;
   text-align: center;
-  vertical-align: middle;
   padding: 15px 10px;
   text-decoration: none;
   font-size: 17px;
+  transition-duration: 1s;
+
 }
 
 nav a:hover {
-  background-color: #a2ac6d;
+  background-color: #019bb9;
+  transition-duration: 1s;
 }
 
 nav .icon {
@@ -91,7 +92,7 @@ nav object {
   display: block;
 }
 
-#landing-page .signup-btn, .authForm button  {
+#landing-page .signup-btn, .form button  {
   background-color: #eae9ce;
   text-decoration: none;
   border-radius: 10px;
@@ -102,7 +103,7 @@ nav object {
   
 }
 
-.authForm button {
+.form button {
   margin-top: 15px;
 }
 
@@ -118,11 +119,11 @@ nav object {
   padding: 20px;
 }
 
-.authForm h1 {
+.form h1 {
   padding: 20px;
 }
 
-.authForm {
+.form {
   padding: 15px;
   display: flex;
   flex-direction: column;
@@ -131,7 +132,7 @@ nav object {
   margin: auto;
 }
 
-.authForm  div {
+.form  div {
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -139,11 +140,40 @@ nav object {
   text-align: left;
 }
 
-.authForm input:not([type="radio"]) {
+.form input:not([type="radio"]) {
   padding: 5px;
   border-radius: 5px;
   border: 1px solid grey;
   min-width:fit-content;
   width: 50%;
+}
+
+#lessons-index {
+  padding-top: 20px;
+  text-align: center;
+  max-width: 600px;
+  margin:auto;
+}
+
+.lesson-div, #lessons-index .lessons-div {
+  margin: 20px; 
+  padding: 15px;
+  /* text-align: left; */
+  background-color: #fcdecc;
+  border-radius: 15px;
+}
+
+.lesson-div > * {
+  padding: 7px 0px;
+}
+
+#lessons-index .lesson-div a {
+  text-decoration: none;
+  border-radius: 10px;
+  /* width:40%; */
+  display: inline-block;
+  margin: 0px 15px;
+  padding: 10px;
+  background-color: #d3b29e;
 }
 
