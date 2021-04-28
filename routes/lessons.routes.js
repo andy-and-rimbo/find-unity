@@ -29,8 +29,7 @@ router.post('/', (req, res, next) => {
     date,
     time,
     address
-  })
-    .then((lesson) => {
+  }).then((lesson) => {
       User.findByIdAndUpdate(req.session.currentUser._id, { $push: {organisedLessons: lesson._id}}, {new:true})
         .then(newlesson => console.log(newlesson))
       res.redirect('/lessons');
