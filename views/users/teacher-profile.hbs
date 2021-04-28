@@ -1,18 +1,19 @@
-{{#with user}}
-<h1>Welcome, {{ capitalize username }}</h1>
-<p>You are a {{ role }}</p>
+<div id="profile-div">
+  {{#with user}}
+    <h1>Welcome, {{ capitalize username }}</h1>
 
-{{#if organisedLessons}}
+    {{#if organisedLessons}}
 
-My organised lessons:
-<ul>
-  {{#each organisedLessons}}
-  <li><a href="/lessons/{{_id}}">{{name}}</a></li>
-  {{/each}}
-</ul>
+      My organised lessons:
+      <ul>
+        {{#each organisedLessons}}
+        <li><a href="/lessons/{{_id}}">{{ name }}</a></li>
+        {{/each}}
+      </ul>
 
-{{else}}
-  <h4>You haven't organised any lessons yet</h4>
-{{/if}}
+    {{else}}
+        <h4>You haven't organised any lessons yet</h4>
+    {{/if}}
 
-{{/with}}
+  {{/with}}  
+</div>
