@@ -7,22 +7,29 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>{{title}}</title>
       <link rel="stylesheet" href="/stylesheets/style.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
    </head>
 
    <body>
-      <nav>
-         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/lessons/">Lessons</a></li>
+      <nav class="topnav">
+            <img src="" alt="">
+            <a href="/">Home</a>
+            <a href="/lessons/">Lessons</a>
 
             {{#if session.currentUser}}
-               <li><a href="/myprofile">My Profile</a></li>
+               <a href="/myprofile">My Profile</a>
                <form action="/logout" method="POST"><button>Logout</button></form>
             {{else}}
-               <li><a href="/login">Login</a></li>
-               <li><a href="/signup">Signup</a></li>
+               <a href="/login">Login</a>
+               <a href="/signup">Signup</a>
             {{/if}}
          </ul>
+         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+         </a>
       </nav>
 
       {{{body}}}
