@@ -7,6 +7,10 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>{{title}}</title>
       <link rel="stylesheet" href="/stylesheets/style.css" />
+        <!-- this is coming from https://docs.mapbox.com/mapbox-gl-js/api/ -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+   
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
@@ -34,8 +38,11 @@
       </nav>
 
       {{{body}}}
+     
+
 
       <script src="/js/script.js"></script>
+    <script src="/js/mapbox.js"></script>
    </body>
 
 </html>

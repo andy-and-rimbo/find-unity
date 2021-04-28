@@ -9,11 +9,13 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
+
 router.get('/profile/:id', isAuthenticated, (req, res, next) => {
   console.log(req.session.currentUser)
   if(req.session.currentUser.role === 'teacher') return res.render('users/teacher-profile')
   res.render('users/student-profile')
 })
+
 
 
 router.get('/myprofile', isAuthenticated, (req,res,next) => {

@@ -58,6 +58,7 @@ app.locals.title = `${capitalized(projectName)} created with Ironlauncher`;
 const index = require("./routes/index.routes");
 const auth = require("./routes/auth.routes");
 const lessons = require("./routes/lessons.routes");
+const apiLessons = require("./routes/api-lessons.routes");
 
 app.use(function (req, res, next) {
   res.locals.session = req.session;
@@ -68,6 +69,7 @@ app.use(function (req, res, next) {
 app.use("/", index);
 app.use("/", auth);
 app.use("/lessons", lessons);
+app.use("/api/v1/lessons", apiLessons);
 
 
 

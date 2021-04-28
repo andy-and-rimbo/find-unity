@@ -2,6 +2,9 @@ const router = require ("express").Router();
 const Lesson = require('../models/Lesson.model');
 const User = require('../models/User.model');
 const {isAuthenticated, isTeacher} = require("../middleware/auth.middleware");
+const { getLessons, addLesson } = require('../controller/lessons');
+
+// router.route('/').get(getLessons);
 
 router.get('/', (req, res, next) => {
 Lesson.find()
@@ -19,7 +22,7 @@ router.get('/add', isTeacher, (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  const { name, description, location, date,time, maxParticipants } = req.body; 
+  const { name, description, location, date,time, maxParticipants, address } = req.body; 
   Lesson.create({
     name,
     description,
@@ -27,6 +30,7 @@ router.post('/', (req, res, next) => {
     date,
     time,
     maxParticipants,
+    address
     owner: req.session.currentUser._id
   })
     .then((lesson) => {
@@ -39,6 +43,7 @@ router.post('/', (req, res, next) => {
     });
   
 });
+
 
 router.get('/:id/delete', isTeacher, (req, res, next) => {
    
@@ -67,13 +72,14 @@ router.get('/:id/edit', isTeacher, (req,res,next) => {
 });
 
 router.post('/:id', (req,res, next) => {
-  const { name, description, location, date,time } = req.body; 
+  const { name, description, location, date,time, address } = req.body; 
   Lesson.findByIdAndUpdate(req.params.id, {
     name,
     description,
     location,
     date,
-    time
+    time,
+    address
   })
   .then (() => {
     res.redirect('/lessons');
@@ -151,38 +157,6 @@ router.get('/:id', (req, res, next) => {
       next(err);
     });
 });
-
-// router.get('/:id/details', (req, res, next) => {
-//   const lessonId = req.params.id;
-//   console.log('show',req.params.id)
-//   Lesson.findById(lessonId).populate('owner').then(lesson => {
-//     res.render('/show', { lessonDetails: lesson })
-//   })
-//   .catch(err => {
-//     next(err);
-//   });
-// })
-
-router.get('/:id/edit', (req, res, next) => {
-  Lesson.findById(req.params.id).populate('student')
-  .then(lesson => {
-    console.log('lesson-log',lesson);
-    User.find().then(users => {
-      // console.log(user.role);
-      let options = '';
-      let selected = '';
-      users.forEach(student => {
-        selected = lesson.student.map(el => el._id).includes(student._id) ? ' selected' : '';
-        options += `<option value="${student._id}" ${selected}>${student.name}</option>`;
-      });
-      console.log(options);
-      res.render('lessons/edit', { lesson, users });
-    })
-  })
-  .catch(err => {
-    next(err);
-  })
-})
 
 
 module.exports = router;
