@@ -24,7 +24,8 @@ const userSchema = new Schema({
       enum: ['teacher', 'student'],
       required: true,
     },
-    profilePic: String,
+    imgPath: String,
+    publicId: String,
     bookedLessons: [
       { type: Schema.Types.ObjectId, 
       ref: 'Lesson'

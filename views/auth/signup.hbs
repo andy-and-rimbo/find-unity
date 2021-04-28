@@ -1,5 +1,5 @@
 
-    <form action="/signup" method="POST" id="signupForm" class="form">
+    <form action="/signup" method="POST" id="signupForm" class="form" enctype="multipart/form-data">
     <h1>Sign up</h1>
       <div>
         <label for="username">*Username:</label>
@@ -12,8 +12,11 @@
       <div>
         <label for="password">*Password:</label>
         <input type="password" name="password" placeholder="Your Password">
-
-      </div>
+        </div>
+      <div>
+          <label for="photo">Picture: </label>
+        <input type="file" name="photo" id="photo">
+        </div>
       <div>
         <p for="role">*Are you a student or a teacher?</p>
         <div>
