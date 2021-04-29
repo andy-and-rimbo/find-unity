@@ -14,11 +14,11 @@ const lessonSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'User',
     },
-  // status: {
-  //   type: String,
-  //   enum: ['online-class', 'offline-class'],
-  //   required: true,
-  // },
+    status: {
+      type: String,
+      enum: ['online-class', 'offline-class'],
+      required: true,
+    },
 
   // student: [
   // {

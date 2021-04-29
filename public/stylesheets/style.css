@@ -190,6 +190,9 @@ margin: 10px auto ;
   padding: 20px;
   text-align: center;
   list-style-position: inside;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profile-pic {
@@ -197,4 +200,5 @@ margin: 10px auto ;
   width: 200px;
   height: 200;
   object-fit: cover;
+  margin: 50px;
 }
