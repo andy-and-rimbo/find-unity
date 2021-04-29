@@ -20,12 +20,12 @@ router.get("/signup", (req, res, next) => { res.render("auth/signup")})
 
 router.post("/signup", uploader.single('photo'),(req, res, next) => {
 
-  const { username, password, email, role } = req.body;
+  const { username, password, email, role, introduction, city } = req.body;
   
   if(!username || !password || !email || !role) return res.render("auth/signup", {message: "Please fill in all of the required fields."});
 
   if (username.match(/\W/g)) return res.render("auth/signup", {message: "Please only use letters and underscores in your username."});
-  if(username.length > 30) return res.render("auth/signup", {message: "Username must be shorter than 30 characters."});
+  if (username.length > 30) return res.render("auth/signup", {message: "Username must be shorter than 30 characters."});
 
   //! uncomment this after development
   // if(!(password.match(/\W/g) && password.match(/\d/g) && password.match(/\w|_/g)) || password.length < 10) 
@@ -54,6 +54,8 @@ router.post("/signup", uploader.single('photo'),(req, res, next) => {
               password: hashedPassword,
               role,
               imgPath, 
+              introduction,
+              city,
               publicId
             })
             res.redirect("/")
@@ -88,6 +90,8 @@ router.post("/login", (req, res, next) => {
 
       } else if (bcryptjs.compareSync(password, user.password)) {
         req.session.currentUser = user;
+        console.log(req.session.currentUser);
+        
 
         if (user.role === "student") res.render('users/student-profile', { user });
         else res.render('users/teacher-profile', { user });
@@ -99,13 +103,12 @@ router.post("/login", (req, res, next) => {
     .catch(error => next(error));
 })
 
-router.get('/logout', (req, res, next) => {
+router.post('/logout', (req, res, next) => {
   req.session.destroy(err => {
     if (err) next(err);
     res.redirect("/");
   })
-});
-
+})
 
 router.get('/profile', isAuthenticated, (req, res, next) => {
   res.render('index', {user: req.user})
