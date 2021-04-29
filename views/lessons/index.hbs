@@ -1,15 +1,18 @@
-<div id="lessons">
+<div id="lessons-page">
   <h1>All yoga lessons</h1>
-  {{#each lessonList}}
-  <div class="lesson-div">
-      <h3>{{name}}</h3>
-      <h4>Date: {{date}}</h4>
-      <h4>Time: {{time}}</h4>
-      <h4>Teacher: {{ owner.username }}</h4>
-      <a href="/lessons/{{_id}}" class="button">See details</a> 
+  <div id="lessons">
+    {{#each lessonList}}
+    <div class="lesson-div">
+        <h3>{{name}}</h3>
+        <h4>Date: {{date}}</h4>
+        <h4>Time: {{time}}</h4>
+        <h4>Teacher: {{ owner.username }}</h4>
+        <a href="/lessons/{{_id}}" class="button">See details</a> 
+    </div>
+
+    {{/each}}
+
   </div>
-
-  {{/each}}
-
   <a href="/lessons/add" class="button create-edit-btn">Create lesson</a>
-</div>
+
+</div>  

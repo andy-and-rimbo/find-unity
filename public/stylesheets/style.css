@@ -152,19 +152,27 @@ nav object {
   min-width:fit-content;
   width: 50%;
 }
+#lessons-page {
+  text-align: center;
+}
 
 #lessons {
   padding-top: 20px;
   text-align: center;
-  max-width: 600px;
+  max-width: 1000px;
   margin:auto;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .lesson-div, #lessons-index .lessons-div {
   margin: 20px; 
   padding: 10px;
+  width: 300px;
+  margin: 20px auto;
+  /* float:; */
   /* text-align: left; */
-  background-color: #fcdecc;
+  background-color: #badfc6;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -180,7 +188,7 @@ nav object {
 
 .create-edit-btn {
   background-color: #d6d6d6;
-  width: 40%;
+  width: 200px;
 margin: 10px auto ;
   
 }
