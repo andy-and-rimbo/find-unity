@@ -33,4 +33,18 @@ exports.getLessons = async (req, res, next) => {
     }
 };
 
+exports.getSingleLessons = async (req, res, next) => {
+    try {
+        const lessons = await Lesson.find({name: req.params.name});
+        console.log('lessonName',lesson);
+        return res.status(200).json({
+            succes: true,
+            count: lessons.length,
+            data: lessons
+        })
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({error: 'Server Error'});
+    }
+};
 

@@ -3,9 +3,17 @@ const router = require ("express").Router();
 //const User = require('../models/User.model');
 //const {isAuthenticated, isTeacher} = require("../middleware/auth.middleware");
 const { getLessons } = require('../controller/lessons');
+const { getSingleLessons } = require('../controller/lessons');
 
 router
   .route('/')
   .get(getLessons);
+
+module.exports = router;
+
+
+router
+  .route('/lesson/:id')
+  .get(getSingleLessons);
 
 module.exports = router;

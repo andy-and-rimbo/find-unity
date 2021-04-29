@@ -35,7 +35,6 @@ async function getLessons() {
         },
         properties: {
           name: lesson.name
-
         }
       };
     });
@@ -44,9 +43,19 @@ async function getLessons() {
   }
 
 
+
+
+
 // Load map with lessoms
 function loadMap(lessons) {
     map.on('load', function() {
+      map.loadImage(
+        'https://res.cloudinary.com/du8yg2esj/image/upload/v1619695358/Group_193_n1pmw8.png',
+        function (error, image) {
+        if (error) throw error;
+        // Add the image to the map style.
+        map.addImage('cat', image);
+        });
       map.addLayer({
         id: 'points',
         type: 'symbol',
@@ -58,12 +67,15 @@ function loadMap(lessons) {
           }
         },
         layout: {
-          'icon-image': 'marker-15',
-          'icon-size': 1.5,
+          'icon-image': 'cat',
+          'icon-size': 0.1,
           'text-field': '{name}',
           'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
           'text-offset': [0, 0.9],
           'text-anchor': 'top'
+        },
+        paint: {
+          "text-color": "#464461"
         }
       });
     });
