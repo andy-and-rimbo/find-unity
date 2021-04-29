@@ -162,12 +162,13 @@ nav object {
 
 .lesson-div, #lessons-index .lessons-div {
   margin: 20px; 
-  padding: 15px;
+  padding: 10px;
   /* text-align: left; */
   background-color: #fcdecc;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-around;
 }
 
@@ -198,7 +199,13 @@ margin: 10px auto ;
 .profile-pic {
   border-radius: 50%;
   width: 200px;
-  height: 200;
+  height: 200px;
   object-fit: cover;
-  margin: 50px;
+}
+
+.map {
+  width: 80%; 
+  height: 50vh;
+  border-radius: 5px;
+  margin:  30px auto;
 }
