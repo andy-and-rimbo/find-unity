@@ -1,17 +1,19 @@
-{{#with user}}
-  <h1>Welcome, {{ username }}</h1>
-  <p>You are a {{ role }}</p>
+<div id="profile-div">
+  {{#with user}}
+    <h1>Welcome, {{ capitalize username }}</h1>
+
   <img src="{{imgPath}}" height="200px">
 
 
-  {{#if bookedLessons}}
-    My booked Classes:
-    <ul>
-      {{#each bookedLessons}}
-        <li><a href="/lessons/{{_id}}">{{name}}</a></li>
-      {{/each}}
-    </ul>
-  {{else}}
-    <h4>You haven't booked onto any classes yet. Check out our <a href="/lessons/">Lessons</a> to see what's on offer.</h4>
-  {{/if}}
-{{/with}}
+    {{#if bookedLessons}}
+      My booked Classes:
+      <ul>
+        {{#each bookedLessons}}
+          <li><a href="/lessons/{{_id}}">{{ name }}</a></li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <h4>You haven't booked onto any classes yet. Check out our <a href="/lessons/">Lessons</a> to see what's on offer.</h4>
+    {{/if}}
+  {{/with}}
+</div>

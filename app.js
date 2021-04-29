@@ -14,6 +14,11 @@ const express = require("express");
 // https://www.npmjs.com/package/hbs
 const hbs = require("hbs");
 
+hbs.handlebars.registerHelper('capitalize', (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1)
+  }
+)
+
 const app = express();
 
 // session configuration for logging in and out

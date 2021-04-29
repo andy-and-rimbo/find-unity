@@ -30,7 +30,9 @@ router.post("/signup", uploader.single('photo'),(req, res, next) => {
   //! uncomment this after development
   // if(!(password.match(/\W/g) && password.match(/\d/g) && password.match(/\w|_/g)) || password.length < 10) 
   //   return res.render("auth/signup", {message: "Please make sure your password includes at least one letter, number and special character. It must also be at least 10 characters long."});
-
+    username.replace(/^\w/, (c) => c.toUpperCase());
+    console.log('capitalised username', username);
+    
 
     User.findOne({username:username})
     .then(user => {

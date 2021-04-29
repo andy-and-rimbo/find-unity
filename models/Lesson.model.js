@@ -7,7 +7,8 @@ const lessonSchema = new Schema({
     name: String,
     description: String,
     location: String,
-    date: Date,
+    dateAndTime: Date,
+    date: String,
     time: String,
     maxParticipants: Number,
     owner: {
@@ -20,12 +21,12 @@ const lessonSchema = new Schema({
   //   required: true,
   // },
 
-  student: [
-  {
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  }
-  ],
+  // student: [
+  // {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'User'
+  // }
+  // ],
   address: {
     type: String,
      required: [true, 'Please add an address']
