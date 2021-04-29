@@ -103,14 +103,14 @@ router.post("/login", (req, res, next) => {
     .catch(error => next(error));
 })
 
-// router.post('/logout', (req, res, next) => {
-//   req.session.destroy(err => {
-//     if (err) next(err);
-//     console.log('logging out');
+router.post('/logout', (req, res, next) => {
+  req.session.destroy(err => {
+    if (err) next(err);
+    console.log('logging out');
     
-//     res.redirect("/");
-//   })
-// })
+    res.redirect("/");
+  })
+})
 
 router.get('/profile', isAuthenticated, (req, res, next) => {
   res.render('index', {user: req.user})
