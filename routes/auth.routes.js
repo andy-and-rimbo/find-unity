@@ -63,10 +63,7 @@ router.post("/signup", uploader.single('photo'),(req, res, next) => {
       })
 })
 
-router.get("/login", (req,res) => {
-  // console.log("Session =====>", req.session);
-
-  res.render("auth/login")})
+router.get("/login", (req,res) => res.render("auth/login"))
 
 router.post("/login", (req, res, next) => {
 
@@ -82,6 +79,8 @@ router.post("/login", (req, res, next) => {
     }
 
     User.findOne({ $or: [{username: emailOrUsername}, {email: emailOrUsername}]})
+    .populate('bookedLessons')
+    .populate('organisedLessons')
     .then(user => {
       if (!user) {
         res.render("auth/login", { message: "Couldn't find an account matching these details." });
