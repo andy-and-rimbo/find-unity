@@ -6,7 +6,6 @@ const { uploader, cloudinary } = require("../config/cloudinary");
 // const cloudinary = require('cloudinary').v2;
 
 console.log(uploader);
-console.log(cloudinary);
 
 
 const saltRounds = 10;
