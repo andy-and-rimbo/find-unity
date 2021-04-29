@@ -156,6 +156,11 @@ nav object {
   text-align: center;
 }
 
+#lesson-details-page {
+  text-align: center;
+
+}
+
 #lessons {
   padding-top: 20px;
   text-align: center;
@@ -165,10 +170,19 @@ nav object {
   flex-wrap: wrap;
 }
 
-.lesson-div, #lessons-index .lessons-div {
+#lessons .lesson-div {
+  width: 300px;
+
+}
+
+#lesson-details-page .lesson-div {
+  min-width: 300px;
+  max-width: 700px
+}
+
+.lesson-div {
   margin: 20px; 
   padding: 10px;
-  width: 300px;
   margin: 20px auto;
   /* float:; */
   /* text-align: left; */
@@ -180,7 +194,7 @@ nav object {
   justify-content: space-around;
 }
 
-#lessons-index .lesson-div a {
+.lesson-div a {
   margin: 0px 15px;
   background-color: #d3b29e;
 }
