@@ -3,10 +3,11 @@
   <div id="lessons">
     {{#each lessonList}}
     <div class="lesson-div">
-        <h3>{{name}}</h3>
+        <h2>{{name}}</h2>
         <h4>Date: {{date}}</h4>
         <h4>Time: {{time}}</h4>
-        <h4>Teacher: {{ owner.username }}</h4>
+          <img src="{{owner.imgPath}}" alt="Profile picture of the organiser" style="width: 100px; height: 100px;" class="profile-pic">
+      <h4>Teacher: {{ owner.username }}</h4>
         <a href="/lessons/{{_id}}" class="button">See details</a> 
     </div>
 
