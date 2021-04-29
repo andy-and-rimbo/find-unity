@@ -13,7 +13,7 @@ module.exports = router;
 
 
 router
-  .route('/lesson/:id')
+  .route('/:id')
   .get(getSingleLessons);
 
 module.exports = router;

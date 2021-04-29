@@ -35,12 +35,12 @@ exports.getLessons = async (req, res, next) => {
 
 exports.getSingleLessons = async (req, res, next) => {
     try {
-        const lessons = await Lesson.find({name: req.params.name});
+        const lesson = await Lesson.findById(req.params.id);
         console.log('lessonName',lesson);
         return res.status(200).json({
             succes: true,
-            count: lessons.length,
-            data: lessons
+            count: 1,
+            data: lesson
         })
     } catch (err) {
         console.log(err);
