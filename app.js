@@ -31,6 +31,7 @@ const mongoose = require('./db/index');
 const isAuthenticated = require("./middleware/auth.middleware");
 
 // app.use(isAuthenticated)
+console.log('!!!!!!!!!!!!!!!!!!!!!', mongoose.connection)
 
 app.use(
   session({
@@ -46,6 +47,10 @@ app.use(
     store: new MongoStore({
       mongooseConnection: mongoose.connection,
     })
+    // store: MongoStore.create({
+    //   mongoUrl: "mongodb+srv://RimboAndy:vvVLCJ3b6Sd2CFu@cluster0.33j5g.mongodb.net/find-unity?retryWrites=true&w=majority",
+    // })
+
   })
 )
 

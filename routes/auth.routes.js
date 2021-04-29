@@ -90,7 +90,7 @@ router.post("/login", (req, res, next) => {
 
       } else if (bcryptjs.compareSync(password, user.password)) {
         req.session.currentUser = user;
-        console.log(req.session.currentUser);
+        console.log('???????????????????', req.session.currentUser);
         
 
         if (user.role === "student") res.render('users/student-profile', { user });
