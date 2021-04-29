@@ -26,7 +26,8 @@
 
             {{#if session.currentUser}}
                <a href="/myprofile">My Profile</a>
-               <form action="/logout" method="POST"><a>Logout</a></form>
+             {{!--   <form action="/logout" method="POST"><a>Logout</a></form> --}}
+                <a href="/logout">Logout</a>
             {{else}}
                <a href="/login">Login</a>
                <a href="/signup">Signup</a>
