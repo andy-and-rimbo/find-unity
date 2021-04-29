@@ -26,13 +26,13 @@
 
             {{#if session.currentUser}}
                <a href="/myprofile">My Profile</a>
-
-             {{!--   <form action="/logout" method="POST"><a>Logout</a></form> --}}
-                <a href="/logout">Logout</a>
+               {{!-- <form action="/logout" method="POST"><a>Logout</a></form> --}}
+                
             {{else}}
                <a href="/login">Login</a>
                <a href="/signup">Signup</a>
             {{/if}}
+            <a href="/logout">Logout</a>
          </ul>
          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
