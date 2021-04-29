@@ -191,3 +191,10 @@ margin: 10px auto ;
   text-align: center;
   list-style-position: inside;
 }
+
+.profile-pic {
+  border-radius: 50%;
+  width: 200px;
+  height: 200;
+  object-fit: cover;
+}

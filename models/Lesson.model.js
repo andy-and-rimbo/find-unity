@@ -6,7 +6,6 @@ const geocoder = require('../utils/geocoder');
 const lessonSchema = new Schema({
     name: String,
     description: String,
-    location: String,
     dateAndTime: Date,
     date: String,
     time: String,
