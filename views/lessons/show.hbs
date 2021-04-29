@@ -2,6 +2,11 @@
 <div id="lessons">
   <h2>Yoga lesson information</h2>
   <div class="lesson-div">
+   {{#with user}}
+
+
+   {{/with}}
+   
     {{#with lesson}}
       <p><strong>Name:</strong> {{name}}</p>
       <p><strong>Location:</strong> {{location.formattedAddress}}</p>
@@ -36,4 +41,4 @@
       {{/if}}  --}}
 </div>
 
-<div id="map" style="width: 80%; height: 50vh;border-radius: 5px;"></div>
+<div id="map_single_lesson" style="width: 80%; height: 50vh;border-radius: 5px;"></div>
