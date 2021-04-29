@@ -202,3 +202,10 @@ margin: 10px auto ;
   object-fit: cover;
   margin: 50px;
 }
+
+#map {
+  width:80%;
+  min-height:300px;
+  min-width: 300px;
+  margin: 20px auto;
+}
