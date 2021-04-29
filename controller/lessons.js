@@ -32,3 +32,5 @@ exports.getLessons = async (req, res, next) => {
         res.status(500).json({error: 'Server Error'});
     }
 };
+
+

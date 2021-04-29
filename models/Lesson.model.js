@@ -61,7 +61,7 @@ createdAt: {
     formattedAddress: loc[0].formattedAddress
   };
 
-  // Do not save address
+  // Do not save address, if address is false
   this.address = undefined;
   next();
 });

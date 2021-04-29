@@ -22,14 +22,13 @@ router.get('/add', isTeacher, (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  const { name, description, location, dateAndTime, maxParticipants, address } = req.body; 
+  const { name, description, dateAndTime, maxParticipants, address } = req.body; 
   console.log('req.body', req.body)
   console.log({dateAndTime});
   
   Lesson.create({
     name,
     description,
-    location,
     dateAndTime,
     date: formatDateAndTime(dateAndTime).date,
     time: formatDateAndTime(dateAndTime).time,
@@ -76,11 +75,10 @@ router.get('/:id/edit', isTeacher, (req,res,next) => {
 });
 
 router.post('/:id', (req,res, next) => {
-  const { name, description, location, date,time, address } = req.body; 
+  const { name, description,date,time, address } = req.body; 
   Lesson.findByIdAndUpdate(req.params.id, {
     name,
     description,
-    location,
     date,
     time,
     address
