@@ -33,7 +33,7 @@ var mapBoxManager = {
       this.mapAllLessons.addControl(nav, 'top-left');
       this.getAllLessons();
     }  
-    if($map_single_lesson){
+    if($map_single_lesson){      
       this.mapSingleLesson = new mapboxgl.Map({
         container: 'map_single_lesson', // container ID in the HTML
         style: 'mapbox://styles/mapbox/streets-v11', // style URL
@@ -45,6 +45,9 @@ var mapBoxManager = {
 
       let nav = new mapboxgl.NavigationControl();
       this.mapSingleLesson.addControl(nav, 'top-left');
+
+      this.getSingleLesson();
+      
     }
   },
   getAllLessons: async function() {
@@ -79,7 +82,7 @@ var mapBoxManager = {
           function (error, image) {
           if (error) throw error;
           // Add the image to the map style.
-          self.mapAllLessons.addImage('cat', image);
+          self.mapAllLessons.addImage('yogi', image);
           });
           self.mapAllLessons.addLayer({
           id: 'points',
@@ -92,7 +95,7 @@ var mapBoxManager = {
             }
           },
           layout: {
-            'icon-image': 'cat',
+            'icon-image': 'yogi',
             'icon-size': 0.1,
             'text-field': '{name}',
             'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
@@ -104,6 +107,67 @@ var mapBoxManager = {
           }
         });
       });
+  },
+  getSingleLesson: async function() {
+    let id = window.location.pathname.split('/')[2];
+    const res = await fetch('/api/v1/lessons/' + id);
+    const data = await res.json();
+
+    console.log(data);
+
+    const lesson = {
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [
+          data.data.location.coordinates[0],
+          data.data.location.coordinates[1]
+        ]
+      },
+      properties: {
+        name: data.data.name
+      }
+    };
+
+    console.log(lesson);
+    this.loadMapSingleLesson(lesson);
+    
+    return lesson;
+  },
+  loadMapSingleLesson: function(lesson) {
+    var self = this;
+    this.mapSingleLesson.on('load', function() {
+      self.mapSingleLesson.loadImage(
+          'https://res.cloudinary.com/du8yg2esj/image/upload/v1619695358/Group_193_n1pmw8.png',
+          function (error, image) {
+          if (error) throw error;
+          // Add the image to the map style.
+          self.mapSingleLesson.addImage('yogi', image);
+          });
+          self.mapSingleLesson.addLayer({
+          id: 'points',
+          type: 'symbol',
+          source: {
+            type: 'geojson',
+            data: {
+              type: 'FeatureCollection',
+              features: [lesson]
+            }
+          },
+          layout: {
+            'icon-image': 'yogi',
+            'icon-size': 0.1,
+            'text-field': '{name}',
+            'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+            'text-offset': [0, 0.9],
+            'text-anchor': 'top'
+          },
+          paint: {
+            "text-color": "#464461"
+          }
+        });
+      });
+      self.mapSingleLesson.setCenter(lesson.geometry.coordinates).zoomTo(15, {duration: 2000});
   }
 };
 
