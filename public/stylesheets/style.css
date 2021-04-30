@@ -149,7 +149,7 @@ nav object {
   padding: 5px;
   border-radius: 5px;
   border: 1px solid grey;
-  min-width:fit-content;
+  /* min-width:fit-content; */
   width: 50%;
 }
 #lessons-page {
