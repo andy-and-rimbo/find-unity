@@ -114,7 +114,6 @@ nav object {
 
 
 #home-info-section {
-  padding-top: 40px;
   max-width: 1300px;
   margin: auto;
   display: flex;
@@ -206,6 +205,9 @@ nav object {
   text-align: center;
   max-width: 500px;
   margin: auto;
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 5px;
+  
 }
 
 .form  div {
@@ -305,3 +307,20 @@ margin: 10px auto ;
   margin:  30px auto;
 }
 
+#login-page, #signup-page {
+  height: calc(100vh - 50px);
+  width: 100vw;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#login-page {
+  background-image: url('/images/login-img.jpg');
+}
+
+#signup-page {
+  background-image: url('/images/signup-img.jpg');
+
+}

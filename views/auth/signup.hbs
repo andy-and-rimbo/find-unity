@@ -1,37 +1,38 @@
-
-    <form action="/signup" method="POST" id="signupForm" class="form" enctype="multipart/form-data">
-    <h1>Sign up</h1>
+<div id="signup-page">
+  <form action="/signup" method="POST" id="signupForm" class="form" enctype="multipart/form-data">
+  <h1>Sign up</h1>
+    <div>
+      <label for="username">*Username:</label>
+      <input type="text" name="username" placeholder="Your Username">
+    </div>
+    <div>
+      <label for="email">*Email:</label>
+      <input type="email" name="email" placeholder="Your Email">
+    </div>
+    <div>
+      <label for="password">*Password:</label>
+      <input type="password" name="password" placeholder="Your Password">
+      </div>
+    <div>
+        <label for="photo">Picture: </label>
+      <input type="file" name="photo" id="photo">
+      </div>
+    <div>
+      <p for="role">*Are you a student or a teacher?</p>
       <div>
-        <label for="username">*Username:</label>
-        <input type="text" name="username" placeholder="Your Username">
+          <input type="radio" value="student" name="role" id="student">
+          <label for="student">Student</label>
       </div>
       <div>
-        <label for="email">*Email:</label>
-        <input type="email" name="email" placeholder="Your Email">
+        <input type="radio" value="teacher" name="role" id="teacher">
+        <label for="teacher">Teacher</label>
       </div>
-      <div>
-        <label for="password">*Password:</label>
-        <input type="password" name="password" placeholder="Your Password">
-        </div>
-      <div>
-          <label for="photo">Picture: </label>
-        <input type="file" name="photo" id="photo">
-        </div>
-      <div>
-        <p for="role">*Are you a student or a teacher?</p>
-        <div>
-            <input type="radio" value="student" name="role" id="student">
-            <label for="student">Student</label>
-        </div>
-        <div>
-          <input type="radio" value="teacher" name="role" id="teacher">
-          <label for="teacher">Teacher</label>
-        </div>
-      </div>
+    </div>
 
-      <button type="submit" class="button">Sign Up</button>
+    <button type="submit" class="button">Sign Up</button>
 
-      {{#if message}}
-      {{message}}
-      {{/if}}
-    </form>
+    {{#if message}}
+    {{message}}
+    {{/if}}
+  </form>
+</div>
