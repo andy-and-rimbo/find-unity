@@ -135,6 +135,26 @@ nav object {
   justify-content: space-around;
   box-shadow: 2px 26px 18px -1px rgba(204, 204, 204, 0.75);
 }
+
+@media screen and (min-width:1200px) {
+  #landing-page section:last-child {
+    display: flex;
+  }
+  #home-info-section {
+    margin: 10px;
+    width: 600px;
+  }
+  #home-info-section > div {
+    margin: 15px;
+  }
+
+  #map_all_lessons {
+    width: 100%;
+    height: 900px
+  }
+
+}
+
 #signup-btn {
   padding:10px;
   background-color: #fff4ea;
@@ -150,15 +170,14 @@ nav object {
   transition-duration: 1s;
 }
 
+
+
 .button {
   padding: 10px;
   display: inline-block;
   border-radius: 10px;
   text-decoration: none;
 }
-
-
-
 
 .form button {
   margin-top: 15px;
