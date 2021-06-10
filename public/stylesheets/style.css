@@ -73,12 +73,12 @@ nav object {
 
 }
 #landing-page > section:first-of-type > div > *{
-  padding: 3rem;
+  margin: 3rem;
 }
 
 #landing-page > section:first-of-type{
   margin: auto;
-  min-height: 80vh;
+  min-height: 500px;
   display: flex;
   background-image: url("../images/yoga-class.jpg");
   background-size: cover;
@@ -135,7 +135,21 @@ nav object {
   justify-content: space-around;
   box-shadow: 2px 26px 18px -1px rgba(204, 204, 204, 0.75);
 }
+#signup-btn {
+  padding:10px;
+  background-color: #fff4ea;
+  box-shadow: 2px 6px 8px -1px rgba(0, 0, 0, 0.75);
+  text-decoration: none;
+  transition-duration: 1s;
 
+}
+
+#signup-btn:hover {
+  background-color: #019bb9;
+  color: white
+  transition-duration: 1s;
+  
+}
 
 .button {
   padding: 10px;
