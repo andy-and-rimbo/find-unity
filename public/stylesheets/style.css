@@ -69,20 +69,33 @@ nav object {
 }
 
 #landing-page {
-  background-color: fff4ea;
+  background-color: #fff4ea;
 
+}
+#landing-page > section:first-of-type > div > *{
+  padding: 3rem;
 }
 
 #landing-page > section:first-of-type{
   margin: auto;
   min-height: 80vh;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   background-image: url("../images/yoga-class.jpg");
   background-size: cover;
   background-position:center;
   background-attachment: fixed;
+}
+
+#landing-page h1 {
+  font-size: 50px;
+  color: white
+}
+
+#landing-page h2 {
+  font-size: 32px;
+  max-width: 700px;
+  color: white
+
 }
 
 /* /Photo by <a href="https://unsplash.com/@mister_a?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Anupam Mahapatra</a> on <a href="https://unsplash.com/s/photos/yoga?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
@@ -112,7 +125,7 @@ nav object {
 #home-info-section > div {
   background-color: white;
   padding: 25px 10px;
-  margin: 5px;
+  margin: 50px 5px;
   text-align: center;
   border-radius: 5px;
   min-height: 250px;
@@ -132,12 +145,7 @@ nav object {
 }
 
 
-#landing-page .signup-btn, .form button  {
-  background-color: #eae9ce;
-  min-width: fit-content;
-  width:30%;
-  border: 1px solid grey;
-}
+
 
 .form button {
   margin-top: 15px;
