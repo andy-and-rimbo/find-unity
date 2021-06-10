@@ -1,7 +1,7 @@
 const isAuthenticated = (req,res,next)  => {
   // console.log(req.session)
   console.log('logged in???')
-  
+  console.log(req.session)
   if (req.session.currentUser) {
     return next();
   }
@@ -9,8 +9,9 @@ const isAuthenticated = (req,res,next)  => {
 }
 
 const isTeacher = ( req, res, next) => {
-  if(req.session.currentUser && req.session.currentUser.role === 'teacher') return next();
   console.log("********************* ", req.session.currentUser);
+  if(req.session.currentUser && req.session.currentUser.role === 'teacher') return next();
+
   
   return res.render('auth/login', {message: `You must be logged in as a teacher to view this page.`})
 }

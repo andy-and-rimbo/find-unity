@@ -146,9 +146,8 @@ nav object {
 
 #signup-btn:hover {
   background-color: #019bb9;
-  color: white
+  color: white;
   transition-duration: 1s;
-  
 }
 
 .button {
@@ -276,7 +275,9 @@ margin: 10px auto ;
   width: 200px;
   height: 200px;
   object-fit: cover;
+  margin: 50px;
 }
+
 
 .map {
   width: 80%; 

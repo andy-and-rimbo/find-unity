@@ -5,7 +5,7 @@ const User = require("../models/User.model");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  // console.log("Session =====>", req.session);
+  console.log("Session =====>", req.session);
 
   res.render("index");
 });
