@@ -132,7 +132,7 @@ nav object {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  box-shadow: 2px 26px 18px -1px rgba(204, 204, 204, 0.75);
+  box-shadow: 2px 26px 18px -1px rgba(61, 47, 47, 0.75);
 }
 
 @media screen and (min-width:1200px) {
@@ -225,50 +225,48 @@ nav object {
   /* min-width:fit-content; */
   width: 50%;
 }
+
 #lessons-page {
+  background-image: url('/images/lessons-page-img.jpg');
+  background-size: cover;
   text-align: center;
-}
-
-#lesson-details-page {
-  text-align: center;
-
+  padding-top: 10px;
 }
 
 #lessons {
   padding-top: 20px;
-  text-align: center;
   max-width: 1000px;
   margin:auto;
   display: flex;
   flex-wrap: wrap;
+  text-align: center;
 }
 
 #lessons .lesson-div {
   width: 300px;
-
+  
 }
 
 #lesson-details-page .lesson-div {
   min-width: 300px;
-  max-width: 700px
+  max-width: 700px;
 }
 
 .lesson-div {
-  margin: 20px; 
-  padding: 10px;
   margin: 20px auto;
-  /* float:; */
-  /* text-align: left; */
-  background-color: #badfc6;
+  background-color: white;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  text-align: center;
+}
+.lesson-div > * {
+  padding: 5px;
 }
 
 .lesson-div a {
-  margin: 0px 15px;
+  margin: 5px 15px;
   background-color: #d3b29e;
 }
 
@@ -296,7 +294,8 @@ margin: 10px auto ;
   width: 200px;
   height: 200px;
   object-fit: cover;
-  margin: 50px;
+  margin: 10px;
+  box-shadow: 2px 2px 18px -1px rgba(61, 47, 47, 0.75);
 }
 
 

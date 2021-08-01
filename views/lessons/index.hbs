@@ -1,14 +1,15 @@
 <div id="lessons-page">
-  <h1>All yoga lessons</h1>
+  <h1>All Yoga Lessons</h1>
   <div id="lessons">
     {{#each lessonList}}
     <div class="lesson-div">
-        <h2>{{name}}</h2>
-        <h4>Date: {{date}}</h4>
-        <h4>Time: {{time}}</h4>
-          <img src="{{owner.imgPath}}" alt="Profile picture of the organiser" style="width: 100px; height: 100px;" class="profile-pic">
+      <img src="{{owner.imgPath}}" alt="Profile picture of the organiser" style="width: 100px; height: 100px;" class="profile-pic">
+      <h2>{{name}}</h2>
+      <h4>Date: {{date}}</h4>
+      <h4>Time: {{time}}</h4>
+
       <h4>Teacher: {{ owner.username }}</h4>
-        <a href="/lessons/{{_id}}" class="button">See details</a> 
+      <a href="/lessons/{{_id}}" class="button">See details</a> 
     </div>
 
     {{/each}}
